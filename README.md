@@ -8,7 +8,7 @@ Main changes are in the file spindle_control.c. Smoothness is improved from the 
   * inserting a little pause (controlled by $29 parameter) before moving to the next step
 The need of smoothing the servo comes from the fact that I am using a polar machine to control a pen on a sheet rather than a spray.
 
-**this improved version of the polar grbl is intended to work and has been tested only on polar machines controlled by Arduino Uno (ATmega 328p)**
+**This improved version of the polar grbl is intended to work and has been tested only on polar machines controlled by Arduino Uno (ATmega 328p)**
 
 <br/>
 <br/>
