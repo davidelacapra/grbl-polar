@@ -1,32 +1,27 @@
 # grbl-polar
 
 ***
+Improved version of the polar grbl from [ilaro-org](https://github.com/ilaro-org/grbl-polar) in order to smooth the movement of the servo motor.
+Main changes are in the file spindle_control.c. Smoothness is improved from the original version by:
+  * increasing the number of steps that divide 0° to 180°
+  * moving the servo by stepping through all the possible steps
+  * inserting a little pause (controlled by $29 parameter) before moving to the next step
+The need of smoothing the servo comes from the fact that I am using a polar machine to control a pen on a sheet rather than a spray.
+
+# this improved version of the polar grbl is intended to work and has been tested only on polar machines controlled by Arduino Uno (ATmga 328p)
+
+
 Graffiti robot firmware base on [Grbl v0.9](https://github.com/grbl/grbl)
 
 The implemented kinematics allow a 2 string + gravity system (as in [hektor](http://juerglehni.com/works/hektor)), and the pwm support allows triggering the spray using a servo-motor.
 
 additional features:
-  * define POLAR: swaps from cartesian to polar kinematics. It's required to set up the distance between the motors. Homing at startup is essential, otherwisse positioning can not be achieved.
-  * define RC_SERVO: Use PIN D11 to drive the servo. Use the commands M03 Sxxx (xxx between 0 and 255) to rotate the servo between 0-180. The command M05 turns the servo to zero degrees. [source](https://github.com/robottini/grbl-servo)
+  * define POLAR: swaps from cartesian to polar kinematics. It's required to set up the distance between the motors. Homing at startup is essential, otherwise positioning can not be achieved.
+  * define RC_SERVO: Use PIN D11 to drive the servo. Use the commands M03 Sxxx (xxx between RC_SERVO_MIN and RC_SERVO_MAX) to rotate the servo between 0-180. The command M05 turns the servo to zero degrees. [source](https://github.com/robottini/grbl-servo)
+  * $29 parameter controls the delay (milliseconds) to be waited before servo steps to the next step when moving
   
   
 ![alt text](https://github.com/ilaro-org/grbl-polar/blob/master/v0.jpg "first test at hangar.org")
-
-
-##Flashing
-
-To flash the grbl to arduino we did it through terminal. To compile the code:   
-    
-    make clean
-    make grbl.hex
-
-And to flash it:   
-    
-    (AVRDUDE-PATH)/avrdude -C(AVRDUDE.CONF-PATH)/avrdude.conf -v -patmega328p -carduino -P/dev/(USB) -b(BAUTRATE) -D -Uflash:w:(GRBLPOLAR-PATH)/grbl.hex:i
-   
-e.g:   
-    
-    /home/Applications/arduino/hardware/tools/avr/bin/avrdude -C/home/Applications/arduino/hardware/tools/avr/etc/avrdude.conf -v -patmega328p -carduino -P/dev/ttyUSB0 -b57600 -D -Uflash:w:/POLAR/grbl-polar/grbl.hex:i 
 
 
 ##Configuring Grbl-polar
