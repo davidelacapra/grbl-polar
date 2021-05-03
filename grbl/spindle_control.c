@@ -20,6 +20,10 @@
 int32_t last_pwm;
 
 /* 
+   this rework of the spindle_control.c is aimed at obtaining a smoother movement of the servo motor. Smoothness is increased from the original version by:
+   	- increasing the number of steps that divide 0° to 180°
+	- moving the servo by stepping through all the possible steps
+	- inserting a little pause (controlled by $29 parameter) before moving to the next step
    RC-Servo PWM modification: switch between 3.9% and 27.5% duty cycle  at 122Hz
    Prescaler 256 --> 16MHz / 256 / 255 / 2 = 122.549 Hz		look at https://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM for frequency calculation
    PWM is controlled by TCNT2 in PWM phase correct mode (TOP: 0xFF)
