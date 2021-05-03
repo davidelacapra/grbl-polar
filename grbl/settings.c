@@ -93,6 +93,8 @@ void settings_restore(uint8_t restore_flag) {
 	settings.max_travel[Y_AXIS] = (-DEFAULT_Y_MAX_TRAVEL);
 	settings.max_travel[Z_AXIS] = (-DEFAULT_Z_MAX_TRAVEL);
 
+    	settings.servo_delay = (DEFAULT_SERVO_DELAY);
+
 
 	write_global_settings();
   }
