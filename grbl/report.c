@@ -224,7 +224,7 @@ void report_grbl_settings() {
     printPgmString(PSTR(" (homing pull-off, mm)\r\n$28=")); printFloat_SettingValue(settings.distance);
     printPgmString(PSTR(" (distance, mm)\r\n$29=")); printFloat_SettingValue(settings.servo_delay);
 
-    printPgmString(PSTR(" (servo delay, integer)\r\n")); 
+    printPgmString(PSTR(" (servo delay, milliseconds)\r\n")); 
   #endif
   
   // Print axis settings
