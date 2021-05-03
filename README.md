@@ -24,7 +24,6 @@ additional features:
 
 <br/>
   
-![alt text](https://github.com/ilaro-org/grbl-polar/blob/master/v0.jpg "first test at hangar.org")
 
 
 ##Configuring Grbl-polar
