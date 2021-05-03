@@ -32,7 +32,7 @@ e.g:
 ##Configuring Grbl-polar
 The Grbl-polar's configuration is the same as in [Grbl v0.9] (https://github.com/ilaro-org/grbl-polar/wiki/Configuring-Grbl-v0.9). But we have added a new setting: 'distance'. You can define it through the GUI settings or by the command line:   
 
-     $27=1000 (distance, mm)
+     $28=1000 (distance, mm)
 
 It defines the distance between the two motors and it is needed in order to achieve machine's positioning.
 
