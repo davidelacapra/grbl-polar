@@ -222,7 +222,9 @@ void report_grbl_settings() {
     printPgmString(PSTR(" (homing seek, mm/min)\r\n$26=")); print_uint8_base10(settings.homing_debounce_delay);
     printPgmString(PSTR(" (homing debounce, msec)\r\n$27=")); printFloat_SettingValue(settings.homing_pulloff);
     printPgmString(PSTR(" (homing pull-off, mm)\r\n$28=")); printFloat_SettingValue(settings.distance);
-    printPgmString(PSTR(" (distance, mm)\r\n"));
+    printPgmString(PSTR(" (distance, mm)\r\n$29=")); printFloat_SettingValue(settings.servo_delay);
+
+    printPgmString(PSTR(" (servo delay, integer)\r\n")); 
   #endif
   
   // Print axis settings
