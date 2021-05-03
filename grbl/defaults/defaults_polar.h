@@ -63,4 +63,5 @@
   #define DEFAULT_Y_OFFSET 0.0 // mm
   #define DEFAULT_Z_OFFSET 200.0 // mm
 
+  #define DEFAULT_SERVO_DELAY 100.0 // milliseconds
 #endif
