@@ -17,15 +17,15 @@
 
 #include "grbl.h"
 
-/* RC-Servo PWM modification: switch between 0.6ms and 2.5ms pulse-width at 61Hz
-   Prescaler 1024 = 15625Hz / 256Steps =  61Hz	64µs/step -> Values 15 / 32 for 1ms / 2ms
-   Reload value = 0x07
-   Replace this file in C:\Program Files (x86)\Arduino\libraries\GRBL
+/* RC-Servo PWM modification: switch between 3.9% and 27.5% duty cycle  at 122Hz
+   Prescaler 256 --> 16MHz / 256 / 255 / 2 = 122.549 Hz
+   PWM is controlled by TCNT2 in PWM phase correct mode (TOP: 0xFF)
 */
 
 #ifdef RC_SERVO
-  #define RC_SERVO_SHORT     9//15       // Timer ticks for 0.6ms pulse duration  (9 for 0.6ms)
-  #define RC_SERVO_LONG      39//32       // Timer ticks for 2.5 ms pulse duration  (39 for 2.5ms)
+  #define RC_SERVO_UP 10	// 10/255 = 3.9% duty cycle
+  #define RC_SERVO_MIN 10	// 70/255 = 27.5% duty cycle
+  #define RC_SERVO_MAX 70	// 70/255 = 27.5% duty cycle
   //#define RC_SERVO_INVERT     1     // Uncomment to invert servo direction
 #endif
 
